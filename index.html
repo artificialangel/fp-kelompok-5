@@ -38,7 +38,21 @@
         Easy Login
       </div>
       
-      <button id="googleLoginBtn" style="color: aliceblue;">Sign in with Google</button>
+      <!-- Google Sign In -->
+      <div id="g_id_onload"
+           data-client_id="1030698977178-97ue8a3eav8pbcangps2nhs0age6edks.apps.googleusercontent.com"
+           data-callback="handleLogin">
+      </div>
+      
+      <div class="g_id_signin"
+           style="display:flex; justify-content:center; margin-top:12px;"
+           data-type="standard"
+           data-size="large"
+           data-theme="outline"
+           data-text="sign_in_with"
+           data-shape="rectangular">
+      </div>
+
 
       <div style="margin-top:12px; font-size:14px; text-align:center; color: aliceblue;">
         Don't have an account? <a href="#" id="toSignup">Create Account</a>
@@ -181,19 +195,12 @@
   </div>
 </div>
 
-<div class="login-wrapper">
-    <div id="g_id_onload"
-         data-client_id="1030698977178-97ue8a3eav8pbcangps2nhs0age6edks.apps.googleusercontent.com"
-         data-callback="handleLogin">
-    </div>
-
-    <div class="g_id_signin"></div>
-</div>
 
 </body>
 
 
 </html>
+
 
 
 
