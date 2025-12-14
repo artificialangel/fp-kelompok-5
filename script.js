@@ -1,4 +1,5 @@
-alert("script.js loaded");
+console.log("SCRIPT JS JALAN");
+alert("SCRIPT JS JALAN");
 
 /* ======================
    GLOBAL VARIABLES
@@ -285,6 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showPage('main');
   }
 });
+
 
 
 
