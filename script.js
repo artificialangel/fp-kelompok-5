@@ -286,8 +286,4 @@ document.addEventListener('DOMContentLoaded', () => {
     showPage('main');
   }
 });
-
-
-
-
-
+});
