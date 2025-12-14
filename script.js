@@ -54,8 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // SUCCESS LOGIN
     isLoggedIn = true;
-    loginPage.style.display = 'none';
-    mainHeader.style.display = 'flex';
+    isLoggedIn = true;
+    localStorage.setItem("isLoggedIn", "true");
+   
+    document.getElementById('mainHeader').style.display = 'flex';
     showPage('main');
   });
 
@@ -286,6 +288,7 @@ window.addEventListener('load', () => {
     showPage('main');
   }
 });
+
 
 
 
