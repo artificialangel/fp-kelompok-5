@@ -85,15 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#loginPage .card').style.display = 'block';
   });
 
-  // Google login/signup placeholders
-  document.getElementById('googleLoginBtn').addEventListener('click', () => {
-    alert("Google login placeholder");
-  });
-  document.getElementById('googleSignUpBtn').addEventListener('click', () => {
-    alert("Google sign-up placeholder");
-  });
-});
-
 /* ======================
    TRANSACTIONS
 ====================== */
@@ -227,7 +218,42 @@ document.addEventListener('input', e => {
   }
 });
 
-/* GOOGLE SIGNIN */
+/* ======================
+   GOOGLE SIGN IN
+====================== */
 window.handleLogin = function (response) {
-  console.log(response);
-}
+  console.log("Google Login Success", response);
+
+  // tandai login
+  isLoggedIn = true;
+  localStorage.setItem("isLoggedIn", "true");
+  localStorage.setItem("loginMethod", "google");
+
+  // sembunyikan login page
+  const loginPage = document.getElementById('loginPage');
+  const mainHeader = document.getElementById('mainHeader');
+
+  if (loginPage) loginPage.style.display = 'none';
+  if (mainHeader) mainHeader.style.display = 'flex';
+
+  // masuk ke main page
+  showPage('main');
+};
+
+/* ======================
+   AUTO LOGIN CHECK
+====================== */
+window.addEventListener('load', () => {
+  if (localStorage.getItem("isLoggedIn") === "true") {
+    isLoggedIn = true;
+
+    const loginPage = document.getElementById('loginPage');
+    const mainHeader = document.getElementById('mainHeader');
+
+    if (loginPage) loginPage.style.display = 'none';
+    if (mainHeader) mainHeader.style.display = 'flex';
+
+    showPage('main');
+  }
+});
+
