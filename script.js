@@ -226,3 +226,8 @@ document.addEventListener('input', e => {
     renderHistory();
   }
 });
+
+/* GOOGLE SIGNIN */
+window.handleLogin = function (response) {
+  console.log(response);
+}
