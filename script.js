@@ -10,10 +10,12 @@ let isLoggedIn = false;
    PAGE CONTROL
 ====================== */
 function showPage(id) {
-  // Block navigation if not logged in
   if (!isLoggedIn && id !== 'loginPage') return;
 
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+  });
+
   const page = document.getElementById(id);
   if (page) page.classList.add('active');
 
@@ -284,5 +286,6 @@ window.addEventListener('load', () => {
     showPage('main');
   }
 });
+
 
 
