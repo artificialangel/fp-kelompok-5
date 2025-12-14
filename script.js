@@ -254,42 +254,35 @@ document.addEventListener('input', e => {
    GOOGLE SIGN IN
 ====================== */
 window.handleLogin = function (response) {
-  console.log("Google Login Success", response);
+  if (!response.credential) {
+    alert("Google login gagal");
+    return;
+  }
 
-  // tandai login
+  // decode JWT (simple)
+  const payload = JSON.parse(atob(response.credential.split('.')[1]));
+
+  console.log(payload);
+
   isLoggedIn = true;
   localStorage.setItem("isLoggedIn", "true");
   localStorage.setItem("loginMethod", "google");
+  localStorage.setItem("userName", payload.name);
 
-  // sembunyikan login page
-  const loginPage = document.getElementById('loginPage');
-  const mainHeader = document.getElementById('mainHeader');
-
-  if (loginPage) loginPage.style.display = 'none';
-  if (mainHeader) mainHeader.style.display = 'flex';
-
-  // masuk ke main page
+  document.getElementById('mainHeader').style.display = 'flex';
   showPage('main');
 };
 
 /* ======================
    AUTO LOGIN CHECK
 ====================== */
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.getItem("isLoggedIn") === "true") {
     isLoggedIn = true;
-
-    const loginPage = document.getElementById('loginPage');
-    const mainHeader = document.getElementById('mainHeader');
-
-    if (loginPage) loginPage.style.display = 'none';
-    if (mainHeader) mainHeader.style.display = 'flex';
-
+    document.getElementById('mainHeader').style.display = 'flex';
     showPage('main');
   }
 });
-
-
 
 
 
