@@ -1,0 +1,531 @@
+* { box-sizing: border-box; }
+
+@font-face {
+  font-family: 'NovaRoundSlim';
+  src: url('fonts/NovaRoundSlim-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+body {
+  margin: 0;
+  font-family: Monospace, monaco;
+  background: linear-gradient(to bottom,#FFDD93,#ffffff);
+  background-repeat: no-repeat;
+}
+
+.header {
+  display: flex; justify-content: space-between;flex-wrap: nowrap;
+  align-items: center; padding: 16px 24px;
+  border-bottom: 1px solid #ddd;background-color: #4E51BF;
+}
+
+.header h2 {
+  color: white;
+  font-family: NovaRoundSlim;
+  white-space: nowrap;  
+}
+.header-actions .h-btn-default {
+  margin-left: 8px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Monospace, monaco;
+  color: #fff;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.header-actions .h-btn-default:hover {
+  background-color: #e0f7ff;
+  color: #000;
+}
+
+.header-actions .h-btn-default:active {
+  background-color: #b3e5fc;
+  color: #000;
+}
+
+.header-actions .h-btn-add {
+  margin-left: 8px;
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Monospace, monaco;
+  color: #fff;
+  background-color: #4E51BF;
+  white-space: nowrap;
+}
+
+.header-actions .h-btn-add:hover {
+  background-color: #e0f7ff;
+  color: #000;
+}
+
+.header-actions .h-btn-add:active {
+  background-color: #b3e5fc;
+  color: #000;
+}
+
+
+/* Main Page */
+.flex {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.col {
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.col:first-child {
+  max-width: 200px;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.summary .box {
+  background-color: #FFDD93;
+  padding: 14px;
+  border-radius: 8px;
+  color: #000;
+}
+
+.summary .box div:first-child {
+  font-size: 13px;
+}
+
+.big-number {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.lihat-btn,
+.col button {
+  margin-top: 16px;
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: Monospace, monaco;
+}
+
+.lihat-btn:hover,
+.col button:hover {
+  background-color: #e0f7ff;
+}
+
+
+.col:last-child {
+  background-color: #4E51BF;
+  color: #ffffff;
+}
+
+#add .col:last-child {
+  background-color: #4E51BF;
+  color: #ffffff;
+}
+
+#main .col:last-child {
+  background-color: #ffffff;
+  color: #4E51BF;          
+  border: 2px solid #4E51BF; 
+  border-radius: 8px;     
+}
+
+.col canvas {
+  width: 100% !important;
+  height: 300px !important;
+}
+
+.col small {
+  display: block;
+  margin-top: 8px;
+  opacity: 0.85;
+  font-size: 13px;
+}
+
+
+
+#history {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.history-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#history > button {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: Monospace, monaco;
+  background: none;
+}
+
+#history > button:hover {
+  background-color: #e0f7ff;
+}
+
+#searchInput {
+  flex: 1 1 auto;
+  padding: 10px 16px;
+  border-radius: 30px;
+  border: 1px solid #4E51BF;
+  font-family: Monospace, monaco;
+  width: auto;  
+}
+
+#history .flex {
+    
+  display: flex;
+  gap: 20px;
+}
+
+#history .col:first-child {
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+#history h4 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+#filterDate,
+#filterCategory {
+  width: 100%;
+  padding: 10px;
+  background-color: #FFDD93;
+  border: none;
+  border-radius: 6px;
+  font-family: Monospace;
+  margin-bottom: 16px;
+}
+
+#historyList {
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* HISTORY ITEM */
+.history-item {
+  background-color: #FFDD93;
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.history-item:hover {
+  background-color: #ffe7b0;
+}
+
+.history-title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.history-amount {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.history-amount.negative {
+  color: #b00020;
+}
+
+.history-date {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  #history .flex {
+    flex-direction: column;
+  }
+
+  #searchInput {
+    width: 100%;
+    margin: 10px 0 0;
+  }
+}
+
+
+#add {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Columns */
+#add .col {
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+#add h4 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+#add input,
+#add select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #FFDD93;
+  font-family: Monospace, monaco;
+  margin-bottom: 16px;
+}
+
+.actions .action-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: Monospace, monaco;
+  border: none;
+  color: #fff;
+}
+
+.actions .save-btn {
+  background-color: #4E51BF;
+}
+
+.actions .save-btn:hover {
+  background-color: #3a3ea8;
+}
+
+.actions .delete-btn {
+  background-color: #b00020;
+}
+
+.actions .delete-btn:hover {
+  background-color: #7f0015;
+}
+
+#add .history-top button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-family: Monospace, monaco;
+  background: none;
+}
+
+#add .history-top button:hover {
+  background-color: #e0f7ff;
+}
+
+@media (max-width: 768px) {
+  #add .flex {
+    flex-direction: column;
+  }
+}
+
+
+#account {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.account-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* BOX - KEDUA KOTAK SAMA UNGU */
+.account-box {
+  background-color: #E6E6FA;
+  padding: 24px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.account-text {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 75%;
+}
+
+.account-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: Monospace, monaco;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.logout-btn {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  color: #4E51BF;
+}
+
+.logout-btn:hover {
+  background-color: #eef0ff;
+}
+
+.delete-btn {
+  background-color: #ffe4e6;
+  border: 1px solid #f43f5e;
+  color: #b00020;
+}
+
+.delete-btn:hover {
+  background-color: #fecdd3;
+}
+
+@media (max-width: 768px) {
+  .account-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .account-text {
+    max-width: 100%;
+  }
+}
+
+
+#add .actions {
+  display: flex;
+  justify-content: space-between; /* kiri-kanan */
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  gap: 12px;
+}
+
+#add .actions button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-family: Monospace, monaco;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+
+#add .actions button:first-child {
+  background-color: #ffe4e6;
+  border-color: #f43f5e;
+  color: #b00020;
+}
+
+#add .actions button:first-child:hover {
+  background-color: #fecdd3;
+}
+
+/* Simpan (save) */
+#add .actions button:last-child {
+  background-color: #dcfce7;
+  border-color: #22c55e;
+  color: #166534;
+}
+
+#add .actions button:last-child:hover {
+  background-color: #bbf7d0;
+}
+
+#add > button {
+  padding: 6px 12px;     
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: none;
+  cursor: pointer;
+  font-family: Monospace, monaco;
+  font-size: 14px;
+  margin-bottom: 16px;  
+  transition: background-color 0.2s ease;
+}
+
+#add > button:hover {
+  background-color: #e0f7ff; 
+}
+
+#history .history-top > button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: none;
+  cursor: pointer;
+  font-family: Monospace, monaco;
+  font-size: 14px;
+  margin-right: 12px;   
+  transition: background-color 0.2s ease;
+}
+
+#history .history-top > button:hover {
+  background-color: #e0f7ff;
+}
+
+.card {
+  background-color: #ffffff;
+  color: #4E51BF;
+  border: 2px solid #4E51BF;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* optional */
+}
+
+.input-field {
+  flex: 1 1 auto;
+  padding: 10px 16px;
+  border-radius: 30px;
+  border: 1px solid #4E51BF;
+  font-family: Monospace, monaco;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  margin-bottom: 16px; /* spacing between fields */
+  transition: border-color 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: #3a3ea8; /* slightly darker purple on focus */
+}
