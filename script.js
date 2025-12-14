@@ -86,6 +86,34 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 /* ======================
+   LOGOUT
+====================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutBtn = document.querySelector('.logout-btn');
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      // reset login state
+      isLoggedIn = false;
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("loginMethod");
+
+      // reset UI
+      document.getElementById('mainHeader').style.display = 'none';
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+      // tampilkan login page lagi
+      const loginPage = document.getElementById('loginPage');
+      loginPage.style.display = 'block';
+      loginPage.classList.add('active');
+
+      alert('Berhasil logout');
+    });
+  }
+});
+
+   
+/* ======================
    TRANSACTIONS
 ====================== */
 function saveTransaction() {
@@ -256,4 +284,5 @@ window.addEventListener('load', () => {
     showPage('main');
   }
 });
+
 
