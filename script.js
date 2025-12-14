@@ -1,3 +1,5 @@
+alert("script.js loaded");
+
 /* ======================
    GLOBAL VARIABLES
 ====================== */
@@ -283,6 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showPage('main');
   }
 });
+
 
 
 
