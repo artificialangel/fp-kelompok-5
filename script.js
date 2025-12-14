@@ -285,3 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 });
 
+function updateSummary() {
+  // dummy function biar JS tidak crash
+}
+
