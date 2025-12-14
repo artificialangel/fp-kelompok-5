@@ -85,8 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const user = document.getElementById('signupUsername').value.trim();
     if (!user) { alert("Please enter username"); return; }
     alert("Account created for " + user);
-    document.getElementById('signupCard').style.display = 'none';
-    document.querySelector('#loginPage .card').style.display = 'block';
+    showPage('signupCard');
+    showPage('loginPage');
   });
 
 /* ======================
@@ -288,6 +288,7 @@ window.addEventListener('load', () => {
     showPage('main');
   }
 });
+
 
 
 
